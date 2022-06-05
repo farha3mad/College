@@ -1,4 +1,4 @@
-#line 1 "D:/EMBEDDED PROJECT/New folder/test3.c"
+#line 1 "D:/ÇáßáíÉ/College/Embedded projects/SMART HOME PIC/CODE/test3.c"
 sbit LCD_RS_Direction at TRISD0_bit;
 sbit LCD_RS at RD0_bit;
 sbit LCD_EN_Direction at TRISD1_bit;
@@ -20,7 +20,7 @@ char x=0;
 char passwordValid;
 char text[7];
 unsigned int buffer ;
-float volt;
+int volt;
 unsigned int temp;
 
 char key_val()
@@ -111,42 +111,31 @@ void main() {
  LCD_Chr_CP(" ");
  LCD_Chr_CP('C');
 
- if(temp>=20 && temp<30)
+ if(temp>=30 && temp<32)
  {
  PWM1_stop();
  PWM1_set_duty(204);
  PORTC.b1=0;
- PORTC.b0=0;
  }
- else if(temp>=30 && temp<40)
+ else if(temp>=32 && temp<34)
  {
  PWM1_stop();
  PWM1_set_duty(230);
  PORTC.b1=0;
- PORTC.b0=0;
  }
- else if(temp>40 && temp<50)
+ else if(temp>=34)
  {
  PWM1_stop();
  PWM1_set_duty(255);
  PORTC.b1=0;
- PORTC.b0=0;
  }
- else if(temp<20)
+ else if(temp<30)
  {
  PWM1_stop();
  PWM1_set_duty(0);
  PORTC.b1=1;
- PORTC.b0=0;
- }
- else if(temp>50)
- {
- PORTC.b1=0;
- PORTC.b0=1;
-
  }
  delay_ms(10);
  PWM1_start();
-
  }
 }

@@ -38,13 +38,10 @@ main
 		RES032
 		SETFOV32
 		SETFUN32
-	Div_32x32_FP
-		SETFDZ32
-		RES032
-		SETFOV32
-		SETFUN32
-	double2word
+	double2int
 		SETIOV3224
+	Div_16x16_S
+		Div_16x16_S_L
 	IntToStr
 		WordToStr
 			Div_16X16_U

@@ -344,24 +344,16 @@ L_main24:
 	MOVLW      129
 	MOVWF      R4+3
 	CALL       _Mul_32x32_FP+0
+	CALL       _double2int+0
 	MOVF       R0+0, 0
 	MOVWF      _volt+0
 	MOVF       R0+1, 0
 	MOVWF      _volt+1
-	MOVF       R0+2, 0
-	MOVWF      _volt+2
-	MOVF       R0+3, 0
-	MOVWF      _volt+3
-	MOVLW      0
+	MOVLW      10
 	MOVWF      R4+0
 	MOVLW      0
 	MOVWF      R4+1
-	MOVLW      32
-	MOVWF      R4+2
-	MOVLW      130
-	MOVWF      R4+3
-	CALL       _Div_32x32_FP+0
-	CALL       _double2word+0
+	CALL       _Div_16x16_S+0
 	MOVF       R0+0, 0
 	MOVWF      _temp+0
 	MOVF       R0+1, 0
@@ -392,125 +384,97 @@ L_main24:
 	MOVLW      0
 	SUBWF      _temp+1, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main57
-	MOVLW      20
+	GOTO       L__main52
+	MOVLW      30
 	SUBWF      _temp+0, 0
-L__main57:
+L__main52:
 	BTFSS      STATUS+0, 0
 	GOTO       L_main38
 	MOVLW      0
 	SUBWF      _temp+1, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main58
-	MOVLW      30
+	GOTO       L__main53
+	MOVLW      32
 	SUBWF      _temp+0, 0
-L__main58:
+L__main53:
 	BTFSC      STATUS+0, 0
 	GOTO       L_main38
-L__main54:
+L__main49:
 	CALL       _PWM1_Stop+0
 	MOVLW      204
 	MOVWF      FARG_PWM1_Set_Duty_new_duty+0
 	CALL       _PWM1_Set_Duty+0
 	BCF        PORTC+0, 1
-	BCF        PORTC+0, 0
 	GOTO       L_main39
 L_main38:
 	MOVLW      0
 	SUBWF      _temp+1, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main59
-	MOVLW      30
+	GOTO       L__main54
+	MOVLW      32
 	SUBWF      _temp+0, 0
-L__main59:
+L__main54:
 	BTFSS      STATUS+0, 0
 	GOTO       L_main42
 	MOVLW      0
 	SUBWF      _temp+1, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main60
-	MOVLW      40
+	GOTO       L__main55
+	MOVLW      34
 	SUBWF      _temp+0, 0
-L__main60:
+L__main55:
 	BTFSC      STATUS+0, 0
 	GOTO       L_main42
-L__main53:
+L__main48:
 	CALL       _PWM1_Stop+0
 	MOVLW      230
 	MOVWF      FARG_PWM1_Set_Duty_new_duty+0
 	CALL       _PWM1_Set_Duty+0
 	BCF        PORTC+0, 1
-	BCF        PORTC+0, 0
 	GOTO       L_main43
 L_main42:
-	MOVF       _temp+1, 0
-	SUBLW      0
-	BTFSS      STATUS+0, 2
-	GOTO       L__main61
-	MOVF       _temp+0, 0
-	SUBLW      40
-L__main61:
-	BTFSC      STATUS+0, 0
-	GOTO       L_main46
 	MOVLW      0
 	SUBWF      _temp+1, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main62
-	MOVLW      50
+	GOTO       L__main56
+	MOVLW      34
 	SUBWF      _temp+0, 0
-L__main62:
-	BTFSC      STATUS+0, 0
-	GOTO       L_main46
-L__main52:
+L__main56:
+	BTFSS      STATUS+0, 0
+	GOTO       L_main44
 	CALL       _PWM1_Stop+0
 	MOVLW      255
 	MOVWF      FARG_PWM1_Set_Duty_new_duty+0
 	CALL       _PWM1_Set_Duty+0
 	BCF        PORTC+0, 1
-	BCF        PORTC+0, 0
-	GOTO       L_main47
-L_main46:
+	GOTO       L_main45
+L_main44:
 	MOVLW      0
 	SUBWF      _temp+1, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main63
-	MOVLW      20
+	GOTO       L__main57
+	MOVLW      30
 	SUBWF      _temp+0, 0
-L__main63:
+L__main57:
 	BTFSC      STATUS+0, 0
-	GOTO       L_main48
+	GOTO       L_main46
 	CALL       _PWM1_Stop+0
 	CLRF       FARG_PWM1_Set_Duty_new_duty+0
 	CALL       _PWM1_Set_Duty+0
 	BSF        PORTC+0, 1
-	BCF        PORTC+0, 0
-	GOTO       L_main49
-L_main48:
-	MOVF       _temp+1, 0
-	SUBLW      0
-	BTFSS      STATUS+0, 2
-	GOTO       L__main64
-	MOVF       _temp+0, 0
-	SUBLW      50
-L__main64:
-	BTFSC      STATUS+0, 0
-	GOTO       L_main50
-	BCF        PORTC+0, 1
-	BSF        PORTC+0, 0
-L_main50:
-L_main49:
-L_main47:
+L_main46:
+L_main45:
 L_main43:
 L_main39:
 	MOVLW      26
 	MOVWF      R12+0
 	MOVLW      248
 	MOVWF      R13+0
-L_main51:
+L_main47:
 	DECFSZ     R13+0, 1
-	GOTO       L_main51
+	GOTO       L_main47
 	DECFSZ     R12+0, 1
-	GOTO       L_main51
+	GOTO       L_main47
 	NOP
 	CALL       _PWM1_Start+0
 	GOTO       L_main22
