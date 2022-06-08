@@ -29,7 +29,7 @@ main
 	EEPROM_Read
 	ADC_Read
 		Delay_22us
-	word2double
+	int2double
 		NRM3232
 			RES032
 			SETFUN32

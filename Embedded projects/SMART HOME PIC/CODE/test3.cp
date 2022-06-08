@@ -14,12 +14,12 @@ sbit LCD_D7 at RD5_bit;
 
 char i;
 char pass[] = {'7','7','7','7'};
-char check[5];
+char check[4];
 char sw_press = 0;
 char x=0;
 char passwordValid;
 char text[7];
-unsigned int buffer ;
+int buffer ;
 int volt;
 unsigned int temp;
 
@@ -79,11 +79,11 @@ void main() {
  lcd_out(1,1,"WLECOME");
  portc.b6 = 1;
  portc.b3 = 1;
- delay_ms(500);
+ delay_ms(1000);
  portc.b3 = 0;
- delay_ms(500);
+ delay_ms(2000);
  portc.b4 = 1;
- delay_ms(500);
+ delay_ms(1000);
  portc.b4 = 0;
  portc.b6 = 0;
  lcd_cmd(_lcd_clear);
@@ -100,7 +100,7 @@ void main() {
  x=0;
  }
  }
- sw_press = '@';
+
 
  buffer = ADC_read(0);
  volt = buffer*4.88;

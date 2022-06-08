@@ -13,12 +13,12 @@ sbit LCD_D7 at RD5_bit;
 
 char i;
 char pass[] = {'7','7','7','7'}; //Door password
-char check[5];
+char check[4];
 char sw_press = 0;
 char x=0;
 char passwordValid;
 char text[7];
-unsigned int buffer ;
+int buffer ;
 int volt;
 unsigned int temp;
 
@@ -78,11 +78,11 @@ void main() {
                     lcd_out(1,1,"WLECOME");
                     portc.b6 = 1; //green led on
                     portc.b3 = 1;  //door motor turns clockwise to open
-                    delay_ms(500);
+                    delay_ms(1000);
                     portc.b3 = 0;   //stop door motor to enter home
-                    delay_ms(500);
+                    delay_ms(2000);
                     portc.b4 = 1;  //door motor turns counter clockwise to close
-                    delay_ms(500);
+                    delay_ms(1000);
                     portc.b4 = 0; //stop door motor
                     portc.b6 = 0; //turn off green led
                     lcd_cmd(_lcd_clear);
@@ -99,7 +99,7 @@ void main() {
                 x=0;
             }
         }
-        sw_press = '@';
+       // sw_press = '@';
         /***Temprature reading**/
         buffer = ADC_read(0);
         volt = buffer*4.88;

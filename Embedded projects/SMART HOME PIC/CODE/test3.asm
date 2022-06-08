@@ -224,11 +224,11 @@ L_main27:
 	CALL       _Lcd_Out+0
 	BSF        PORTC+0, 6
 	BSF        PORTC+0, 3
-	MOVLW      6
+	MOVLW      11
 	MOVWF      R11+0
-	MOVLW      19
+	MOVLW      38
 	MOVWF      R12+0
-	MOVLW      173
+	MOVLW      93
 	MOVWF      R13+0
 L_main31:
 	DECFSZ     R13+0, 1
@@ -240,11 +240,11 @@ L_main31:
 	NOP
 	NOP
 	BCF        PORTC+0, 3
-	MOVLW      6
+	MOVLW      21
 	MOVWF      R11+0
-	MOVLW      19
+	MOVLW      75
 	MOVWF      R12+0
-	MOVLW      173
+	MOVLW      190
 	MOVWF      R13+0
 L_main32:
 	DECFSZ     R13+0, 1
@@ -254,13 +254,12 @@ L_main32:
 	DECFSZ     R11+0, 1
 	GOTO       L_main32
 	NOP
-	NOP
 	BSF        PORTC+0, 4
-	MOVLW      6
+	MOVLW      11
 	MOVWF      R11+0
-	MOVLW      19
+	MOVLW      38
 	MOVWF      R12+0
-	MOVLW      173
+	MOVLW      93
 	MOVWF      R13+0
 L_main33:
 	DECFSZ     R13+0, 1
@@ -326,15 +325,13 @@ L_main34:
 	CLRF       _x+0
 L_main25:
 L_main24:
-	MOVLW      64
-	MOVWF      _sw_press+0
 	CLRF       FARG_ADC_Read_channel+0
 	CALL       _ADC_Read+0
 	MOVF       R0+0, 0
 	MOVWF      _buffer+0
 	MOVF       R0+1, 0
 	MOVWF      _buffer+1
-	CALL       _word2double+0
+	CALL       _int2double+0
 	MOVLW      246
 	MOVWF      R4+0
 	MOVLW      40
